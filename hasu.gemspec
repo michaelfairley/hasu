@@ -5,7 +5,7 @@ require 'hasu/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "hasu"
-  spec.version       = Hash::VERSION
+  spec.version       = Hasu::VERSION
   spec.authors       = ["Michael Fairley"]
   spec.email         = ["michaelfairley@gmail.com"]
   spec.description   = %q{Prototype Gosu games with ease}
