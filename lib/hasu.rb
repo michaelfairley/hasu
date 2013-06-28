@@ -61,6 +61,14 @@ module Hasu
     Hasu.error = e
   end
 
+  def reset
+    unless Hasu.error
+      super
+    end
+  rescue => e
+    Hasu.error = e
+  end
+
   def draw(*)
     if Hasu.error
       ([Hasu.error.inspect] + Hasu.error.backtrace).each_with_index do |line, i|
