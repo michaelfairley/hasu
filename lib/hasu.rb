@@ -62,9 +62,8 @@ module Hasu
   end
 
   def reset
-    unless Hasu.error
-      super
-    end
+    super
+    Hasu.error = nil
   rescue => e
     Hasu.error = e
   end
