@@ -94,7 +94,11 @@ module Hasu
     when Gosu::Window.char_to_button_id('r')
       reset
     else
-      super(id)
+      begin
+        super(id)
+      rescue => e
+        Hasu.error = e
+      end
     end
   end
 end
