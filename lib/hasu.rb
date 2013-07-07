@@ -22,6 +22,9 @@ module Hasu
 
   def self.error=(error)
     @error = error
+
+    $stderr.puts @error.inspect
+    $stderr.puts @error.backtrace.join("\n")
   end
 
   def self.run(window)
