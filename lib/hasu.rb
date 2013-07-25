@@ -67,7 +67,7 @@ module Hasu
   end
 
   def reset
-    super
+    super  if defined?(super)
     Hasu.error = nil
   rescue => e
     Hasu.error = e
