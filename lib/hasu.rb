@@ -6,7 +6,7 @@ module Hasu
   end
 
   def self.load(path)
-    reloads[path] = File.mtime(path)
+    reloads[path] = File.exists?(path) ? File.mtime(path) : 0
     begin
       super
       true
@@ -37,7 +37,7 @@ module Hasu
   end
 
   def self.reload!
-    to_reload = reloads.select{|f,t| File.mtime(f) > t}
+    to_reload = reloads.select{|f,t| File.exists?(f) && File.mtime(f) > t}
 
     !to_reload.empty? && to_reload.all? do |file,_|
       puts "Reloading #{file}"
