@@ -6,7 +6,7 @@ module Hasu
   end
 
   def self.load(path)
-    reloads[path] = File.exists?(path) ? File.mtime(path) : 0
+    reloads[path] = File.exists?(path) ? File.mtime(path) : Time.now
     begin
       super
       true
