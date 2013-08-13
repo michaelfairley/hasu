@@ -1,3 +1,5 @@
+require "gosu"
+
 class Hasu::Window < Gosu::Window
   def self.inherited(other)
     includer = caller.first.split(":").first
