@@ -1,10 +1,5 @@
 module Hasu
   module Guard
-    def initialize(*)
-      super
-      reset
-    end
-
     def update(*)
       if Hasu.reload!
         Hasu.error = nil

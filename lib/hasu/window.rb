@@ -6,7 +6,16 @@ module Hasu
     def self.inherited(other)
       includer = caller.first.split(":").first
       Hasu.reloads[includer] = File.mtime(includer)
-      other.send(:prepend, Hasu::Guard)
+      if other.respond_to?(:prepend, true)
+        other.send(:prepend, Hasu::Guard)
+      else
+        warn "Most of Hasu's nifty features (e.g. error catching, file reloading) are only available on Ruby >= 2.0."
+      end
+    end
+
+    def initialize(*)
+      super
+      reset
     end
 
     def self.run
