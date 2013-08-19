@@ -15,7 +15,7 @@ module Hasu
 
     def initialize(*)
       super
-      reset
+      reset  unless Hasu.error
     end
 
     def self.run
