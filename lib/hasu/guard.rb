@@ -38,7 +38,7 @@ module Hasu
     end
 
     def button_down(id)
-      if id == Gosu::Window.char_to_button_id('r')
+      if id == Gosu::KbR
         reset
       else
         begin
