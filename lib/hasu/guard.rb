@@ -38,10 +38,7 @@ module Hasu
     end
 
     def button_down(id)
-      case id
-      when Gosu::KbEscape
-        close
-      when Gosu::Window.char_to_button_id('r')
+      if id == Gosu::Window.char_to_button_id('r')
         reset
       else
         begin
