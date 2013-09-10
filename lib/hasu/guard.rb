@@ -1,5 +1,10 @@
 module Hasu
   module Guard
+    def update(*)
+      super
+    rescue => e
+      Hasu.error = e
+    end
     def reset
       super if defined?(super)
       Hasu.error = nil
