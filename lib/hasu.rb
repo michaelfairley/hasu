@@ -1,19 +1,15 @@
 require "hasu/version"
 require "hasu/window"
+require "listen"
 
 module Hasu
-  def self.reloads
-    @files ||= {}
-  end
-
-  def self.load(path)
-    reloads[path] = File.exists?(path) ? File.mtime(path) : Time.now
-    begin
-      super
-      true
-    rescue Exception => e
-      Hasu.error = e
-      false
+  def self.watch path
+    abs_path = File.expand_path File.dirname(path)
+    Listen.to(abs_path, ignore: /#{path}/) do |modified, added, removed|
+      [modified,added,removed].flatten.each {|file|
+        puts "Reloading #{file}"
+        load file
+      }
     end
   end
 
@@ -27,15 +23,6 @@ module Hasu
     if @error
       $stderr.puts @error.inspect
       $stderr.puts @error.backtrace.join("\n")
-    end
-  end
-
-  def self.reload!
-    to_reload = reloads.select{|f,t| File.exists?(f) && File.mtime(f) > t}
-
-    !to_reload.empty? && to_reload.all? do |file,_|
-      puts "Reloading #{file}"
-      load(file)
     end
   end
 end

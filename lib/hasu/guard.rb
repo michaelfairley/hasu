@@ -1,18 +1,7 @@
 module Hasu
   module Guard
-    def update(*)
-      if Hasu.reload!
-        Hasu.error = nil
-      end
-      unless Hasu.error
-        super
-      end
-    rescue => e
-      Hasu.error = e
-    end
-
     def reset
-      super  if defined?(super)
+      super if defined?(super)
       Hasu.error = nil
     rescue => e
       Hasu.error = e
