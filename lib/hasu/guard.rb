@@ -5,8 +5,10 @@ module Hasu
     rescue => e
       Hasu.error = e
     end
+
     def reset
       super if defined?(super)
+      Hasu.window = self unless Hasu.window
       Hasu.error = nil
     rescue => e
       Hasu.error = e
@@ -35,11 +37,7 @@ module Hasu
       if id == Gosu::KbR
         reset
       else
-        begin
-          super(id)
-        rescue => e
-          Hasu.error = e
-        end
+        super(id)
       end
     end
   end

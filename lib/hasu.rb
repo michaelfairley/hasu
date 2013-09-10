@@ -10,7 +10,16 @@ module Hasu
         puts "Reloading #{file}"
         load file
       }
+      @window and @window.reset
     end
+  end
+
+  def self.window=(window)
+    @window = window
+  end
+
+  def self.window
+    @window
   end
 
   def self.error
