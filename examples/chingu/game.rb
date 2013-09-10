@@ -13,6 +13,7 @@ class Game < Chingu::Window
   end
 
   def reset
+    Ball.all.each(&:destroy)
     Ball.create
     Ball.create
   end
