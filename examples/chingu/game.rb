@@ -1,7 +1,8 @@
 require "chingu"
 require "hasu"
+require "./ball.rb"
 
-Hasu.load "ball.rb"
+Hasu.watch __FILE__
 
 class Game < Chingu::Window
   prepend Hasu::Guard

@@ -4,8 +4,8 @@ require "listen"
 
 module Hasu
   def self.watch path
-    abs_path = File.expand_path File.dirname(path)
-    Listen.to(abs_path, ignore: /#{path}/) do |modified, added, removed|
+    dir_path = File.expand_path File.dirname(path)
+    Listen.to(dir_path, ignore: /#{path}/) do |modified, added, removed|
       [modified,added,removed].flatten.each {|file|
         puts "Reloading #{file}"
         load file
