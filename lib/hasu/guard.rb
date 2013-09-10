@@ -32,13 +32,5 @@ module Hasu
     def _hasu_font
       @_hasu_font ||= Gosu::Font.new(self, Gosu::default_font_name, 16)
     end
-
-    def button_down(id)
-      if id == Gosu::KbR
-        reset
-      else
-        super(id)
-      end
-    end
   end
 end
