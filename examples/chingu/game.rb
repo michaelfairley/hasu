@@ -1,7 +1,8 @@
 require "chingu"
 require "hasu"
+require "./ball.rb"
 
-Hasu.load "ball.rb"
+Hasu.watch __FILE__
 
 class Game < Chingu::Window
   prepend Hasu::Guard
@@ -12,6 +13,7 @@ class Game < Chingu::Window
   end
 
   def reset
+    Ball.all.each(&:destroy)
     Ball.create
     Ball.create
   end

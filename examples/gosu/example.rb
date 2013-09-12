@@ -1,9 +1,10 @@
 require 'gosu'
 $:.unshift '../lib'
 require 'hasu'
-Hasu.load 'rect.rb'
+require './rect.rb'
+Hasu.watch __FILE__
 
-class Example < Gosu::Window
+class Example < Hasu::Window
   prepend Hasu
 
   def initialize
@@ -22,4 +23,4 @@ class Example < Gosu::Window
   end
 end
 
-Hasu.run(Example)
+Example.run

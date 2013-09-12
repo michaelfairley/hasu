@@ -4,8 +4,6 @@ require "hasu/guard"
 module Hasu
   class Window < Gosu::Window
     def self.inherited(other)
-      includer = caller.first.split(":").first
-      Hasu.reloads[includer] = File.mtime(includer)
       if other.respond_to?(:prepend, true)
         other.send(:prepend, Hasu::Guard)
       else
@@ -15,7 +13,7 @@ module Hasu
 
     def initialize(*)
       super
-      reset  unless Hasu.error
+      reset unless Hasu.error
     end
 
     def self.run
