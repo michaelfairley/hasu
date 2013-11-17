@@ -57,13 +57,13 @@ class Game < Hasu::Window
 end
 ```
 
-If you're using Chingu (or another library which has its own window subsclass), you can prepend `Hasu::Guard` onto your window for the same effect:
+If you're using Chingu (or another library which has its own window subclass), you can prepend `Hasu::Guard` onto your window for the same effect:
 
 ```ruby
 class Game < Chingu::Window
   prepend Hasu::Guard
 
-def initialize
+  def initialize
     super(640, 480, false)
   end
 
