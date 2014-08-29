@@ -18,10 +18,10 @@ module Hasu
       reset  unless Hasu.error
     end
 
-    def self.run
+    def self.run(*args)
       unless @running
         @running = true
-        new.show
+        new(*args).show
       end
     end
   end
