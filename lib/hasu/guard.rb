@@ -21,7 +21,7 @@ module Hasu
     def draw(*)
       if Hasu.error
         ([Hasu.error.inspect] + Hasu.error.backtrace).each_with_index do |line, i|
-          _hasu_font.draw(line.gsub("\n",''), 10, 10 + i * 16, 0)
+          _hasu_font.draw_text(line.gsub("\n",''), 10, 10 + i * 16, 0)
         end
       else
         begin
